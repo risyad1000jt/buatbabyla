@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>For My Valentine ❤️</title>
+<style>
+  body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+    color: white;
+  }
+
+  .card {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+    max-width: 400px;
+  }
+
+  h1 {
+    margin-bottom: 20px;
+  }
+
+  button {
+    padding: 12px 25px;
+    border: none;
+    border-radius: 30px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: 0.3s;
+  }
+
+  .yes {
+    background: #ff4d6d;
+    color: white;
+  }
+
+  .yes:hover {
+    background: #ff1e4d;
+  }
+
+  .no {
+    background: #aaa;
+    color: white;
+    position: absolute;
+  }
+
+  #message {
+    margin-top: 20px;
+    font-size: 18px;
+    display: none;
+  }
+</style>
+</head>
+<body>
+
+<!-- Background Music -->
+<audio id="bgMusic" loop playsinline preload="auto">
+  <source src="starry-eyes.mp3" type="audio/mpeg">
+  Your browser does not support the audio element.
+</audio>
+
+
+<div class="card">
+  <h1>Babyla, Will You Be My Valentine? 💖</h1>
+  
+  <button class="yes" onclick="sayYes()">Yes ❤️</button>
+  <button class="no" id="noBtn">No 😢</button>
+
+  <div id="message">
+  YAYYY!! AILOPU SAYANG ❤️🥰<br><br>
+  <a id="driveLink" href="https://drive.google.com/file/d/1alB_YKeAP17aqkq4bSu32H_47nqQiLnm/view?usp=drive_link" target="_blank" onclick="playMusic()" style="color:white; font-weight:bold; text-decoration:underline;">Klik beb, ini buat kamu 💌</a>
+</div>
+</div>
+
+<script>
+  function sayYes() {
+    document.getElementById("message").style.display = "block";
+  }
+
+  function playMusic() {
+    const music = document.getElementById("bgMusic");
+    if (music) {
+      music.play().catch(() => {});
+    }
+  }
+
+  // Play music on FIRST user interaction (iPhone-safe)
+  function initMusicOnce() {
+    playMusic();
+    document.removeEventListener("click", initMusicOnce);
+    document.removeEventListener("touchstart", initMusicOnce);
+  }
+
+  document.addEventListener("click", initMusicOnce);
+  document.addEventListener("touchstart", initMusicOnce);
+
+  const noBtn = document.getElementById("noBtn");
+
+  function moveNoButton() {
+    const x = Math.random() * (window.innerWidth - 120);
+    const y = Math.random() * (window.innerHeight - 60);
+    noBtn.style.left = x + "px";
+    noBtn.style.top = y + "px";
+  }
+
+  // Desktop
+  noBtn.addEventListener("mouseover", moveNoButton);
+
+  // Mobile
+  noBtn.addEventListener("touchstart", moveNoButton);
+</script>
+
+</body>
+</html>
